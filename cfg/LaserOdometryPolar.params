@@ -5,8 +5,11 @@ gen = ParameterGenerator()
 gen.add("kf_dist_angular", paramtype="double", default=0.174532925, min=0, max=6.28, configurable=True,
         description="Maximum angular displacement between key scans.")
 
-gen.add("kf_dist_linear", paramtype="double", default=0.10, min=0, max=2, configurable=True,
-        description="Maximum angular displacement between key scans.")
+gen.add("kf_dist_linear_x", paramtype="double", default=0.10, min=0, max=2, configurable=True,
+        description="Maximum linear displacement in x direction between key scans.")
+
+gen.add("kf_dist_linear_y", paramtype="double", default=0.10, min=0, max=2, configurable=True,
+        description="Maximum linear displacement in y direction between key scans.")
 
 gen.add("min_valid_points", paramtype="int", default=200, min=0, max=600, configurable=True,
 description="Minimum number of valid reading for scan matching.")

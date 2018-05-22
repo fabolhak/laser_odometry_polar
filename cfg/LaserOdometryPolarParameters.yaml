@@ -6,11 +6,17 @@
 # [min,max]:	[0/6.28]
 kf_dist_angular: 0.174532925
 
-# Name:	kf_dist_linear
-# Desc:	Maximum angular displacement between key scans.
+# Name:	kf_dist_linear_x
+# Desc:	Maximum linear displacement in x direction between scans
 # Type:	double
 # [min,max]:	[0/2]
-kf_dist_linear: 1
+kf_dist_linear_x: 0.5
+
+# Name:	kf_dist_linear_y
+# Desc:	Maximum linear displacement in y direction between scans
+# Type:	double
+# [min,max]:	[0/2]
+kf_dist_linear_y: 0.05
 
 # Name:	min_valid_points
 # Desc:	Minimum number of valid reading for scan matching.

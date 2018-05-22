@@ -32,7 +32,9 @@ protected:
 protected:
 
   ParametersPtr params_ptr_;
-  double kf_dist_linear_sq_;
+  double kf_dist_linear_x_;
+  double kf_dist_linear_y_;
+  double kf_dist_angular_;
 
   std::shared_ptr<PMScan> prev_scan_;
 
