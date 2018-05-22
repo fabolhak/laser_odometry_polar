@@ -113,6 +113,19 @@ bool LaserOdometryPolar::initialize(const sensor_msgs::LaserScanConstPtr& scan_m
   polar_matcher_.PM_STOP_COND        = params_ptr_->stop_condition * M_TO_CM;
   polar_matcher_.PM_STOP_COND_ICP    = params_ptr_->stop_condition * M_TO_CM;
 
+
+  ROS_DEBUG_STREAM("Set PM_L_POINTS: "         << polar_matcher_.PM_L_POINTS);
+  ROS_DEBUG_STREAM("Set PM_FOV: "              << polar_matcher_.PM_FOV);
+  ROS_DEBUG_STREAM("Set PM_MAX_RANGE: "        << polar_matcher_.PM_MAX_RANGE);
+  ROS_DEBUG_STREAM("Set PM_TIME_DELAY: "       << polar_matcher_.PM_TIME_DELAY);
+  ROS_DEBUG_STREAM("Set PM_MIN_VALID_POINTS: " << polar_matcher_.PM_MIN_VALID_POINTS);
+  ROS_DEBUG_STREAM("Set PM_SEARCH_WINDOW: "    << polar_matcher_.PM_SEARCH_WINDOW);
+  ROS_DEBUG_STREAM("Set PM_MAX_ERROR: "        << polar_matcher_.PM_MAX_ERROR);
+  ROS_DEBUG_STREAM("Set PM_MAX_ITER: "         << polar_matcher_.PM_MAX_ITER);
+  ROS_DEBUG_STREAM("Set PM_MAX_ITER_ICP: "     << polar_matcher_.PM_MAX_ITER_ICP);
+  ROS_DEBUG_STREAM("Set PM_STOP_COND: "        << polar_matcher_.PM_STOP_COND);
+  ROS_DEBUG_STREAM("Set PM_STOP_COND_ICP: "    << polar_matcher_.PM_STOP_COND_ICP);
+
   polar_matcher_.pm_init();
 
   prev_scan_ = std::make_shared<PMScan>(scan_msg->ranges.size());
