@@ -38,8 +38,8 @@ bool LaserOdometryPolar::processImpl(const sensor_msgs::LaserScanConstPtr& laser
 
   convert(laser_msg, current_scan_);
 
-  current_scan_->rx = prediction.translation()(0) * M_TO_CM;
-  current_scan_->ry = prediction.translation()(1) * M_TO_CM;
+  current_scan_->rx =  prediction.translation()(1) * M_TO_CM; // y
+  current_scan_->ry = -prediction.translation()(0) * M_TO_CM; // -x
   current_scan_->th = utils::getYaw(prediction.linear());
 
   prev_scan_->rx = 0;
