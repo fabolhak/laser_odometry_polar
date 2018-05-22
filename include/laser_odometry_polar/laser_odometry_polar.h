@@ -37,6 +37,7 @@ protected:
   double kf_dist_angular_;
 
   std::shared_ptr<PMScan> prev_scan_;
+  std::shared_ptr<PMScan> current_scan_;
 
   PolarMatcher polar_matcher_;
 
@@ -50,6 +51,8 @@ protected:
   void updateLaserPose();
 
   bool isKeyFrame(const Transform& increment) override;
+  void isKeyFrame() override;
+  void isNotKeyFrame() override;
 };
 
 } /* namespace laser_odometry */

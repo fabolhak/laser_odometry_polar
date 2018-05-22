@@ -34,7 +34,7 @@ bool LaserOdometryPolar::configureImpl()
 bool LaserOdometryPolar::processImpl(const sensor_msgs::LaserScanConstPtr& laser_msg,
                                      const Transform& prediction)
 {
-  std::shared_ptr<PMScan> current_scan_ = std::make_shared<PMScan>(laser_msg->ranges.size());
+  current_scan_ = std::make_shared<PMScan>(laser_msg->ranges.size());
 
   convert(laser_msg, current_scan_);
 
@@ -61,8 +61,6 @@ bool LaserOdometryPolar::processImpl(const sensor_msgs::LaserScanConstPtr& laser
   increment_.translation()(1) = -current_scan_->rx * CM_TO_M;
   increment_.linear() = utils::matrixYaw(current_scan_->th);
 
-  prev_scan_.reset();
-  prev_scan_ = current_scan_;
   return true;
 }
 
@@ -154,6 +152,20 @@ bool LaserOdometryPolar::isKeyFrame(const Transform& increment)
 
   return true;
 }
+
+void LaserOdometryPolar::isKeyFrame()
+{
+  prev_scan_.reset();
+  prev_scan_ = current_scan_;
+}
+
+void LaserOdometryPolar::isNotKeyFrame()
+{
+  prev_scan_.reset();
+  prev_scan_ = current_scan_;
+}
+
+
 
 } /* namespace laser_odometry */
 
