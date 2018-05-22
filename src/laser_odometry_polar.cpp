@@ -73,12 +73,9 @@ void LaserOdometryPolar::convert(const sensor_msgs::LaserScanConstPtr& scan_msg,
 
   for (int i = 0; i < scan_msg->ranges.size(); ++i)
   {
-    int reading_bad = 0;
-
     if (scan_msg->ranges[i] == 0)
     {
       psm_scan->r[i] = READING_ERROR;
-      reading_bad = 1;
     }
     else
     {
@@ -86,8 +83,7 @@ void LaserOdometryPolar::convert(const sensor_msgs::LaserScanConstPtr& scan_msg,
       psm_scan->x[i] = psm_scan->r[i] * polar_matcher_.pm_co[i];
       psm_scan->y[i] = psm_scan->r[i] * polar_matcher_.pm_si[i];
     }
-
-    psm_scan->bad[i] = reading_bad;
+    psm_scan->bad[i] = false;
   }
 
   polar_matcher_.pm_median_filter  (psm_scan.get());
