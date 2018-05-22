@@ -125,6 +125,7 @@ bool LaserOdometryPolar::initialize(const sensor_msgs::LaserScanConstPtr& scan_m
   polar_matcher_.pm_init();
 
   prev_scan_ = std::make_shared<PMScan>(scan_msg->ranges.size());
+  convert(scan_msg, prev_scan_);
 
   return true;
 }
